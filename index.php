@@ -8,7 +8,6 @@ if($method == 'POST'){
 	$json = json_decode($requestBody);
 
 	$text = $json->queryResult->parameters->text;
-	echo "<script>alert(".$text.");<script>";
 
 	switch ($text) {
 		case 'Sophia':
