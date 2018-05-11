@@ -1,7 +1,6 @@
 <?php 
 
-session_start();
-include('config.php');
+
 
 $method = $_SERVER['REQUEST_METHOD'];
 if($method == 'POST'){
@@ -9,16 +8,9 @@ if($method == 'POST'){
 	$json = json_decode($requestBody);
 
 	$text = $json->queryResult->parameters->text;
+	echo "<script>alert(".$text.");<script>";
 
-$sql = "SELECT location FROM location WHERE name = '$text'";
-$query = mysqli_query($con, $sql);
-if($query){
-			$speech = $query;
-		}
-else 
-	$speech = "oops";
-
-/*	switch ($text) {
+	switch ($text) {
 		case 'Sophia':
 			$speech = "OMG YAS";
 			break;
@@ -35,7 +27,7 @@ else
 			$speech = "Sorry, I didnt get that. Please ask me something else.";
 			break;
 	}
-*/
+
 	$response = new \stdClass();
 	$response->fulfillmentText = $speech;
 //	$response->displayText = $speech;
